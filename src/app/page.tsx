@@ -5,19 +5,21 @@ export default function Home() {
   const [text, setText] = useState('')
   const [traslated, setTranslated] = useState('')
   return (
-    <main className="p-4">
+    <main className="p-10">
       <div>
         <textarea
-          className="border"
+          className="border w-full text-2xl p-2"
+          autoFocus
           value={text}
           rows={10}
-          cols={100}
           onChange={e => {
             setText(e.target.value)
             traslate(e.target.value, setTranslated)
           }}
         ></textarea>
-        <pre>{traslated}</pre>
+        <div className="mt-10">
+          <pre>{traslated}</pre>
+        </div>
       </div>
     </main>
   )
