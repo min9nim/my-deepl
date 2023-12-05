@@ -8,7 +8,7 @@ export async function POST(request: Request) {
     // console.log(result)
 
     return NextResponse.json(
-      { message: text + '\n\n' + text },
+      { message: text + '\n\n\n' + text },
       {
         status: 200,
       },
