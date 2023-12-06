@@ -22,7 +22,7 @@ export default function Home() {
             autoFocus
             rows={5}
             onChange={e => {
-              const value = e.target.value.trim()
+              const value = e.target.value
               setText(value)
               traslate(value, setTranslated, setLoading)
             }}
