@@ -12,7 +12,7 @@ export default function Home() {
       <div className="text-2xl">
         <div className="mb-10">
           <textarea
-            className="border w-full p-2"
+            className="border w-full p-4"
             autoFocus
             rows={5}
             onChange={e => {
@@ -21,10 +21,10 @@ export default function Home() {
           />
         </div>
         {loading ? (
-          <div>Loading..</div>
+          <div className="animate-bounce">Loading..</div>
         ) : (
           traslated && (
-            <div className="flex bg-gray-50	p-2">
+            <div className="flex bg-gray-50	p-4">
               <pre>{traslated}</pre>
               <div
                 className="inline cursor-pointer hover:scale-110"
