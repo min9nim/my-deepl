@@ -13,12 +13,12 @@ export default function Home() {
   const [text, setText] = useState('')
   return (
     <main className="p-4">
-      <div className="text-2xl">
+      <div className="text-xl">
         <div className="flex mb-10">
           <textarea
             ref={taRef}
             value={text}
-            className="border w-full p-4"
+            className="border w-full p-4 border-gray-100"
             autoFocus
             rows={5}
             onChange={e => {
@@ -59,10 +59,12 @@ export default function Home() {
           <div className="animate-bounce">Loading..</div>
         ) : (
           traslated && (
-            <div className="flex bg-gray-50	p-4">
-              <pre>{traslated}</pre>
+            <div className="flex">
+              <div className="flex bg-gray-50	p-4 mr-4 w-full">
+                <pre>{traslated}</pre>
+              </div>
               <div
-                className="inline cursor-pointer hover:scale-110"
+                className="inline cursor-pointer hover:scale-110 p-2 flex justify-center flex-col"
                 onClick={() => {
                   copyToClipboard(traslated)
                   toast.success('copied')
