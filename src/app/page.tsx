@@ -4,6 +4,7 @@ import IconCopy from './components/icons/IconCopy'
 import { copyToClipboard } from './utils'
 import toast from 'react-hot-toast'
 import IconPaste from './components/icons/IconPaste'
+import IconClear from './components/icons/IconClear'
 
 export default function Home() {
   const taRef = useRef<HTMLTextAreaElement>(null)
@@ -25,22 +26,33 @@ export default function Home() {
               traslate(e.target.value, setTranslated, setLoading)
             }}
           />
-          <div
-            className="inline cursor-pointer hover:scale-110"
-            onClick={() => {
-              navigator.clipboard
-                .readText()
-                .then(text => {
-                  setText(text)
-                  traslate(text, setTranslated, setLoading)
-                  console.log('Pasted content: ', text)
-                })
-                .catch(err => {
-                  console.error('Failed to read clipboard contents: ', err)
-                })
-            }}
-          >
-            <IconPaste size={42} />
+          <div>
+            <div
+              className="inline cursor-pointer hover:scale-110"
+              onClick={() => {
+                navigator.clipboard
+                  .readText()
+                  .then(text => {
+                    setText(text)
+                    traslate(text, setTranslated, setLoading)
+                    console.log('Pasted content: ', text)
+                  })
+                  .catch(err => {
+                    console.error('Failed to read clipboard contents: ', err)
+                  })
+              }}
+            >
+              <IconPaste size={42} />
+            </div>
+            <div
+              className="inline cursor-pointer hover:scale-110"
+              onClick={() => {
+                setText('')
+                setTranslated('')
+              }}
+            >
+              <IconClear size={38} />
+            </div>
           </div>
         </div>
         {loading ? (
@@ -75,7 +87,7 @@ const traslate = debounce(async (text, setTranslated, setLoading) => {
   }).then(res => res.json())
   setLoading(false)
   setTranslated(result.message)
-}, 2000)
+}, 1500)
 
 function debounce(func, timeout = 300) {
   let timer
