@@ -20,18 +20,20 @@ export default function Home() {
             traslate(e.target.value, setTranslated)
           }}
         ></textarea>
-        <div className="mt-10">
-          <pre>{traslated}</pre>
-          <div
-            className="inline cursor-pointer hover:scale-110"
-            onClick={() => {
-              copyToClipboard(traslated)
-              toast.success('copied')
-            }}
-          >
-            <IconCopy size={22} />
+        {traslated && (
+          <div className="mt-10 flex">
+            <pre>{traslated}</pre>
+            <div
+              className="inline cursor-pointer hover:scale-110"
+              onClick={() => {
+                copyToClipboard(traslated)
+                toast.success('copied')
+              }}
+            >
+              <IconCopy size={22} />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </main>
   )
