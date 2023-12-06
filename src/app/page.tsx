@@ -26,7 +26,7 @@ export default function Home() {
               traslate(e.target.value, setTranslated, setLoading)
             }}
           />
-          <div>
+          <div className="flex flex-col	items-center justify-center	">
             <div
               className="inline cursor-pointer hover:scale-110"
               onClick={() => {
