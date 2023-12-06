@@ -1,24 +1,46 @@
 'use client'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import IconCopy from './components/icons/IconCopy'
 import { copyToClipboard } from './utils'
 import toast from 'react-hot-toast'
+import IconPaste from './components/icons/IconPaste'
 
 export default function Home() {
+  const taRef = useRef<HTMLTextAreaElement>(null)
   const [traslated, setTranslated] = useState('')
   const [loading, setLoading] = useState(false)
+  const [text, setText] = useState('')
   return (
     <main className="p-4">
       <div className="text-2xl">
-        <div className="mb-10">
+        <div className="flex mb-10">
           <textarea
+            ref={taRef}
+            value={text}
             className="border w-full p-4"
             autoFocus
             rows={5}
             onChange={e => {
+              setText(e.target.value)
               traslate(e.target.value, setTranslated, setLoading)
             }}
           />
+          <div
+            className="inline cursor-pointer hover:scale-110"
+            onClick={() => {
+              navigator.clipboard
+                .readText()
+                .then(text => {
+                  setText(text)
+                  console.log('Pasted content: ', text)
+                })
+                .catch(err => {
+                  console.error('Failed to read clipboard contents: ', err)
+                })
+            }}
+          >
+            <IconPaste size={42} />
+          </div>
         </div>
         {loading ? (
           <div className="animate-bounce">Loading..</div>
