@@ -6,42 +6,51 @@ import toast from 'react-hot-toast'
 
 export default function Home() {
   const [traslated, setTranslated] = useState('')
+  const [loading, setLoading] = useState(false)
   return (
     <main className="p-4">
       <div className="text-2xl">
-        <textarea
-          className="border w-full p-2"
-          autoFocus
-          rows={5}
-          onChange={e => {
-            traslate(e.target.value, setTranslated)
-          }}
-        ></textarea>
-        {traslated && (
-          <div className="mt-10 flex">
-            <pre>{traslated}</pre>
-            <div
-              className="inline cursor-pointer hover:scale-110"
-              onClick={() => {
-                copyToClipboard(traslated)
-                toast.success('copied')
-              }}
-            >
-              <IconCopy size={22} />
+        <div className="mb-10">
+          <textarea
+            className="border w-full p-2"
+            autoFocus
+            rows={5}
+            onChange={e => {
+              traslate(e.target.value, setTranslated, setLoading)
+            }}
+          />
+        </div>
+        {loading ? (
+          <div>Loading..</div>
+        ) : (
+          traslated && (
+            <div className="flex bg-gray-50	p-2">
+              <pre>{traslated}</pre>
+              <div
+                className="inline cursor-pointer hover:scale-110"
+                onClick={() => {
+                  copyToClipboard(traslated)
+                  toast.success('copied')
+                }}
+              >
+                <IconCopy size={22} />
+              </div>
             </div>
-          </div>
+          )
         )}
       </div>
     </main>
   )
 }
 
-const traslate = debounce(async (text, setTranslated) => {
+const traslate = debounce(async (text, setTranslated, setLoading) => {
+  setLoading(true)
   const result = await fetch('/api/translate', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ text }),
   }).then(res => res.json())
+  setLoading(false)
   setTranslated(result.message)
 }, 2000)
 
