@@ -5,7 +5,6 @@ import { copyToClipboard } from './utils'
 import toast from 'react-hot-toast'
 
 export default function Home() {
-  const [text, setText] = useState('')
   const [traslated, setTranslated] = useState('')
   return (
     <main className="p-4">
@@ -13,10 +12,8 @@ export default function Home() {
         <textarea
           className="border w-full p-2"
           autoFocus
-          value={text}
           rows={5}
           onChange={e => {
-            setText(e.target.value)
             traslate(e.target.value, setTranslated)
           }}
         ></textarea>
