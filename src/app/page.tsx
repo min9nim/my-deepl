@@ -22,8 +22,9 @@ export default function Home() {
             autoFocus
             rows={5}
             onChange={e => {
-              setText(e.target.value)
-              traslate(e.target.value, setTranslated, setLoading)
+              const value = e.target.value.trim()
+              setText(value)
+              traslate(value, setTranslated, setLoading)
             }}
           />
           <div className="flex flex-col	items-center justify-center	">
@@ -33,9 +34,10 @@ export default function Home() {
                 navigator.clipboard
                   .readText()
                   .then(text => {
-                    setText(text)
-                    traslate(text, setTranslated, setLoading)
-                    console.log('Pasted content: ', text)
+                    const value = text.trim()
+                    setText(value)
+                    traslate(value, setTranslated, setLoading)
+                    console.log('Pasted content: ', value)
                   })
                   .catch(err => {
                     console.error('Failed to read clipboard contents: ', err)
@@ -87,7 +89,7 @@ const traslate = debounce(async (text, setTranslated, setLoading) => {
   const result = await fetch('/api/translate', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text }),
+    body: JSON.stringify({ text: text.trim() }),
   }).then(res => res.json())
   setLoading(false)
   setTranslated(result.message)
