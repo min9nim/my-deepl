@@ -1,5 +1,8 @@
 'use client'
 import { useState } from 'react'
+import IconCopy from './components/icons/IconCopy'
+import { copyToClipboard } from './utils'
+import toast from 'react-hot-toast'
 
 export default function Home() {
   const [text, setText] = useState('')
@@ -19,6 +22,15 @@ export default function Home() {
         ></textarea>
         <div className="mt-10">
           <pre>{traslated}</pre>
+          <div
+            className="inline cursor-pointer hover:scale-110"
+            onClick={() => {
+              copyToClipboard(traslated)
+              toast.success('copied')
+            }}
+          >
+            <IconCopy size={22} />
+          </div>
         </div>
       </div>
     </main>
