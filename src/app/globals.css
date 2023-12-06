@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+textarea:focus-within {
+  border: 1px solid #eee;
+  box-shadow: none;
+  outline: none;
+}

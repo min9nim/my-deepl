@@ -18,7 +18,7 @@ export default function Home() {
           <textarea
             ref={taRef}
             value={text}
-            className="border w-full p-4 border-gray-100"
+            className="border w-full p-4 border-gray-200"
             autoFocus
             rows={5}
             onChange={e => {
