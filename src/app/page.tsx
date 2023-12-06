@@ -61,7 +61,9 @@ export default function Home() {
           traslated && (
             <div className="flex">
               <div className="flex bg-gray-50	p-4 mr-4 w-full">
-                <pre>{traslated}</pre>
+                <pre className="break-words whitespace-pre-wrap	">
+                  {traslated}
+                </pre>
               </div>
               <div
                 className="inline cursor-pointer hover:scale-110 p-2 flex justify-center flex-col"
