@@ -6,6 +6,8 @@ export async function POST(request: Request) {
 
     const result = await deeplApi(text)
 
+    console.log({ text }, result)
+
     return NextResponse.json(
       { message: text + '\n---\n' + result.translations[0].text },
       {

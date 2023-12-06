@@ -5,13 +5,13 @@ export default function Home() {
   const [text, setText] = useState('')
   const [traslated, setTranslated] = useState('')
   return (
-    <main className="p-10">
-      <div>
+    <main className="p-4">
+      <div className="text-2xl">
         <textarea
-          className="border w-full text-2xl p-2"
+          className="border w-full p-2"
           autoFocus
           value={text}
-          rows={10}
+          rows={5}
           onChange={e => {
             setText(e.target.value)
             traslate(e.target.value, setTranslated)
@@ -32,7 +32,7 @@ const traslate = debounce(async (text, setTranslated) => {
     body: JSON.stringify({ text }),
   }).then(res => res.json())
   setTranslated(result.message)
-}, 500)
+}, 2000)
 
 function debounce(func, timeout = 300) {
   let timer
