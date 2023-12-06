@@ -13,7 +13,7 @@ export default function Home() {
   const [text, setText] = useState('')
   return (
     <main className="p-4">
-      <div className="text-xl">
+      <div className="text-lg">
         <div className="flex mb-10">
           <textarea
             ref={taRef}
