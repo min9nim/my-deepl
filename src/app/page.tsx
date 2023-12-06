@@ -32,6 +32,7 @@ export default function Home() {
                 .readText()
                 .then(text => {
                   setText(text)
+                  traslate(text, setTranslated, setLoading)
                   console.log('Pasted content: ', text)
                 })
                 .catch(err => {
