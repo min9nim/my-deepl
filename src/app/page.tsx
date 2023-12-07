@@ -11,6 +11,7 @@ export default function Home() {
   const [traslated, setTranslated] = useState('')
   const [loading, setLoading] = useState(false)
   const [text, setText] = useState('')
+
   return (
     <main className="p-4">
       <div className="flex items-center gap-2 mb-4">
@@ -36,33 +37,36 @@ export default function Home() {
               traslate(value, setTranslated, setLoading)
             }}
           />
-          <div className="flex flex-row	items-center	">
-            <div
-              className="inline cursor-pointer hover:scale-110"
-              onClick={() => {
-                navigator.clipboard
-                  .readText()
-                  .then(text => {
-                    const value = text.trim()
-                    setText(value)
-                    traslate(value, setTranslated, setLoading)
-                  })
-                  .catch(err => {
-                    console.error('Failed to read clipboard contents: ', err)
-                  })
-              }}
-            >
-              <IconPaste size={42} />
+          <div className="flex flex-row	items-center justify-between	">
+            <div className="flex items-center">
+              <div
+                className="inline cursor-pointer hover:scale-110"
+                onClick={() => {
+                  navigator.clipboard
+                    .readText()
+                    .then(text => {
+                      const value = text.trim()
+                      setText(value)
+                      traslate(value, setTranslated, setLoading)
+                    })
+                    .catch(err => {
+                      console.error('Failed to read clipboard contents: ', err)
+                    })
+                }}
+              >
+                <IconPaste size={42} />
+              </div>
+              <div
+                className="inline cursor-pointer hover:scale-110"
+                onClick={() => {
+                  setText('')
+                  setTranslated('')
+                }}
+              >
+                <IconClear size={38} />
+              </div>
             </div>
-            <div
-              className="inline cursor-pointer hover:scale-110"
-              onClick={() => {
-                setText('')
-                setTranslated('')
-              }}
-            >
-              <IconClear size={38} />
-            </div>
+            <div>- Usage: 100 / 500,000</div>
           </div>
         </div>
         {loading ? (
