@@ -68,7 +68,7 @@ export default function Form({ usage }) {
               </div>
             </div>
             <div>
-              {`- Usage: ${usage.character_count.toLocaleString()} / ${usage.character_limit.toLocaleString()} (${
+              {`- Usage: ${usage.character_count.toLocaleString()} / ${(usage.character_limit/1000)}K (${
                 Math.floor(
                   (usage.character_count * 1000) / usage.character_limit,
                 ) / 10
