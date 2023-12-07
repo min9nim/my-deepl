@@ -1,3 +1,4 @@
+import { deeplReq } from '@/app/utils'
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
@@ -25,11 +26,7 @@ export async function POST(request: Request) {
 }
 
 const deeplApi = text =>
-  fetch(`https://api-free.deepl.com/v2/translate`, {
+  deeplReq(`/v2/translate`, {
     method: 'post',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `DeepL-Auth-Key ${process.env.API_KEY}`,
-    },
     body: JSON.stringify({ text: [text], target_lang: 'EN' }),
-  }).then(res => res.json())
+  })
