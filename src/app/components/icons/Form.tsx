@@ -1,6 +1,6 @@
 'use client'
 
-import { copyToClipboard } from '@/app/utils'
+import { copyToClipboard, debounce } from '@/app/utils'
 import { useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 import IconClear from './IconClear'
@@ -110,11 +110,3 @@ const traslate = debounce(async (text, setTranslated, setLoading) => {
   setLoading(false)
   setTranslated(result.message)
 }, 1500)
-
-function debounce(func, timeout = 300) {
-  let timer
-  return (...args) => {
-    clearTimeout(timer)
-    timer = setTimeout(() => func(...args), timeout)
-  }
-}

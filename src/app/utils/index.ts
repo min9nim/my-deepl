@@ -15,7 +15,7 @@ export const copyToClipboard = val => {
   document.body.removeChild(t)
 }
 
-export const deeplReq = (path, option) =>
+export const deeplReq = (path: string, option = {}) =>
   fetch(`https://api-free.deepl.com${path}`, {
     headers: {
       'Content-Type': 'application/json',
@@ -23,3 +23,11 @@ export const deeplReq = (path, option) =>
     },
     ...option,
   }).then(res => res.json())
+
+export function debounce(func, timeout = 300) {
+  let timer
+  return (...args) => {
+    clearTimeout(timer)
+    timer = setTimeout(() => func(...args), timeout)
+  }
+}

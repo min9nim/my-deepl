@@ -1,8 +1,9 @@
 import Form from './components/icons/Form'
-import { API_URL } from './utils'
+import { deeplReq } from './utils'
 
 export default async function Home() {
-  const usage = await fetch(API_URL + '/api/usage').then(res => res.json())
+  // const usage = await fetch(API_URL + '/api/usage').then(res => res.json())
+  const usage = await deeplReq(`/v2/usage`)
 
   return (
     <main className="p-4">

@@ -6,9 +6,6 @@ export async function GET(request: Request) {
     const result = await deeplReq(`/v2/usage`, {
       method: 'get',
     })
-
-    console.log(result)
-
     return NextResponse.json(result, {
       status: 200,
     })
