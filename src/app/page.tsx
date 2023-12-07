@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main className="p-4">
       <div className="flex items-center gap-2 mb-4">
-        <img src="/apple-icon-144x144.png" style={{ width: 50 }} />
+        <img src="/apple-icon-144x144.png" style={{ width: 40 }} />
         <div className="text-3xl font-bold">myDeepl</div>
       </div>
       <div className="text-base">
