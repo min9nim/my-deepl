@@ -7,6 +7,7 @@ import IconClear from './IconClear'
 import IconCopy from './IconCopy'
 import IconPaste from './IconPaste'
 
+const TEXTAREA_HEIGHT = 200
 export default function Form({ usage }) {
   const taRef = useRef<HTMLTextAreaElement>(null)
   const [traslated, setTranslated] = useState('')
@@ -22,13 +23,16 @@ export default function Form({ usage }) {
             value={text}
             className="border w-full p-4 border-gray-200"
             autoFocus
-            rows={5}
+            style={{ height: TEXTAREA_HEIGHT }}
             onChange={e => {
               if (!taRef.current) {
                 return
               }
               // taRef.current.style.height = 'auto'
-              taRef.current.style.height = `${taRef.current.scrollHeight}px`
+              taRef.current.style.height = `${Math.max(
+                taRef.current.scrollHeight,
+                TEXTAREA_HEIGHT,
+              )}px`
               const value = e.target.value
               setText(value)
               traslate(value, setTranslated, setLoading)
