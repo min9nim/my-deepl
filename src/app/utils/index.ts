@@ -1,3 +1,11 @@
+export const isBrowser = typeof window === 'object'
+export const PROD_HOST = 'my-deepl.vercel.app'
+export const isProd =
+  process.env.VERCEL_GIT_COMMIT_REF === 'main' ||
+  (isBrowser && window.location.host === PROD_HOST)
+
+export const API_URL = isProd ? `https://${PROD_HOST}` : 'http://localhost:3000'
+
 export const copyToClipboard = val => {
   let t = document.createElement('textarea')
   document.body.appendChild(t)
