@@ -1,10 +1,10 @@
 'use client'
 import { useRef, useState } from 'react'
-import IconCopy from './components/icons/IconCopy'
-import { copyToClipboard } from './utils'
 import toast from 'react-hot-toast'
-import IconPaste from './components/icons/IconPaste'
 import IconClear from './components/icons/IconClear'
+import IconCopy from './components/icons/IconCopy'
+import IconPaste from './components/icons/IconPaste'
+import { copyToClipboard } from './utils'
 
 export default function Home() {
   const taRef = useRef<HTMLTextAreaElement>(null)
@@ -13,8 +13,8 @@ export default function Home() {
   const [text, setText] = useState('')
   return (
     <main className="p-4">
-      <div className="text-lg">
-        <div className="flex mb-10">
+      <div className="text-base">
+        <div className="flex mb-10 flex-col">
           <textarea
             ref={taRef}
             value={text}
@@ -27,7 +27,7 @@ export default function Home() {
               traslate(value, setTranslated, setLoading)
             }}
           />
-          <div className="flex flex-col	items-center justify-center	">
+          <div className="flex flex-row	items-center	">
             <div
               className="inline cursor-pointer hover:scale-110"
               onClick={() => {
@@ -61,7 +61,7 @@ export default function Home() {
           <div className="animate-bounce">Loading..</div>
         ) : (
           traslated && (
-            <div className="flex">
+            <div className="flex flex-col">
               <div className="flex bg-gray-50	p-4 mr-4 w-full">
                 <pre className="break-words whitespace-pre-wrap	">
                   {traslated}
