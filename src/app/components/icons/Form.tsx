@@ -89,7 +89,7 @@ export default function Form({ usage }) {
                 </pre>
               </div>
               <div
-                className="inline cursor-pointer hover:scale-110 p-4 flex justify-center flex-col"
+                className="inline cursor-pointer hover:scale-110 p-2 px-4 flex justify-center flex-col"
                 onClick={() => {
                   copyToClipboard(traslated)
                   toast.success('copied')
