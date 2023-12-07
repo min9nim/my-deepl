@@ -46,7 +46,6 @@ export default function Home() {
                     const value = text.trim()
                     setText(value)
                     traslate(value, setTranslated, setLoading)
-                    console.log('Pasted content: ', value)
                   })
                   .catch(err => {
                     console.error('Failed to read clipboard contents: ', err)
@@ -94,11 +93,16 @@ export default function Home() {
 }
 
 const traslate = debounce(async (text, setTranslated, setLoading) => {
+  const value = text.trim()
+  if (!value) {
+    setTranslated('')
+    return
+  }
   setLoading(true)
   const result = await fetch('/api/translate', {
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text: text.trim() }),
+    body: JSON.stringify({ text: value }),
   }).then(res => res.json())
   setLoading(false)
   setTranslated(result.message)
