@@ -22,7 +22,7 @@ export default function Form({ usage }) {
             ref={taRef}
             value={text}
             className="border w-full p-4 border-gray-200"
-            autoFocus
+            autoFocus // 해당 속성이 개발자도구 element탭에서 body 태그가 계속 깜빡이게 만드는 원인
             style={{ height: TEXTAREA_HEIGHT }}
             onChange={e => {
               if (!taRef.current) {
