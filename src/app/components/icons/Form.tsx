@@ -68,7 +68,9 @@ export default function Form({ usage }) {
               </div>
             </div>
             <div>
-              {`- Usage: ${usage.character_count.toLocaleString()} / ${(usage.character_limit/1000)}K (${
+              {`- Usage: ${usage.character_count.toLocaleString()} / ${
+                usage.character_limit / 1000
+              }K (${
                 Math.floor(
                   (usage.character_count * 1000) / usage.character_limit,
                 ) / 10
@@ -87,7 +89,7 @@ export default function Form({ usage }) {
                 </pre>
               </div>
               <div
-                className="inline cursor-pointer hover:scale-110 p-2 flex justify-center flex-col"
+                className="inline cursor-pointer hover:scale-110 p-4 flex justify-center flex-col"
                 onClick={() => {
                   copyToClipboard(traslated)
                   toast.success('copied')
