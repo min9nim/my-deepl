@@ -26,6 +26,11 @@ export default function Home() {
             autoFocus
             rows={5}
             onChange={e => {
+              if (!taRef.current) {
+                return
+              }
+              // taRef.current.style.height = 'auto'
+              taRef.current.style.height = `${taRef.current.scrollHeight}px`
               const value = e.target.value
               setText(value)
               traslate(value, setTranslated, setLoading)
