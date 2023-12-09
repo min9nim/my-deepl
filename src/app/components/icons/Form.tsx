@@ -86,9 +86,9 @@ export default function Form({ usage }) {
               <div className="flex bg-gray-50	p-4 mr-4 w-full">
                 <pre className="break-words whitespace-pre-wrap	">{result}</pre>
               </div>
-              <div className="flex flex-row text-base">
+              <div className="flex flex-row text-base p-2 px-2 gap-5">
                 <div
-                  className="inline cursor-pointer hover:scale-110 p-2 px-4 flex justify-center flex-row items-center gap-1"
+                  className="inline cursor-pointer hover:scale-110 flex justify-center flex-row items-center gap-1"
                   onClick={() => {
                     copyToClipboard(result)
                     toast.success('copied')
@@ -98,7 +98,7 @@ export default function Form({ usage }) {
                   <div>KO & EN</div>
                 </div>
                 <div
-                  className="inline cursor-pointer hover:scale-110 p-2 px-4 flex justify-center flex-row items-center gap-1"
+                  className="inline cursor-pointer hover:scale-110 flex justify-center flex-row items-center gap-1"
                   onClick={() => {
                     copyToClipboard(traslated)
                     toast.success('copied')
@@ -108,7 +108,7 @@ export default function Form({ usage }) {
                   <div>Only EN</div>
                 </div>
                 <div
-                  className="inline cursor-pointer hover:scale-110 p-2 px-4 flex justify-center flex-row items-center gap-1"
+                  className="inline cursor-pointer hover:scale-110 flex justify-center flex-row items-center gap-1"
                   onClick={() => {
                     copyToClipboard(text)
                     toast.success('copied')
