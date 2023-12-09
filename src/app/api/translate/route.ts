@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     console.log({ text }, result)
 
     return NextResponse.json(
-      { message: text + '\n---\n' + result.translations[0].text },
+      { text, message: result.translations[0].text },
       {
         status: 200,
       },

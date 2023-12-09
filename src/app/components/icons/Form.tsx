@@ -13,7 +13,7 @@ export default function Form({ usage }) {
   const [traslated, setTranslated] = useState('')
   const [loading, setLoading] = useState(false)
   const [text, setText] = useState('')
-
+  const result = `${text}\n\n---\n\n${traslated}`
   return (
     <div>
       <div className="text-base">
@@ -84,18 +84,39 @@ export default function Form({ usage }) {
           traslated && (
             <div className="flex flex-col">
               <div className="flex bg-gray-50	p-4 mr-4 w-full">
-                <pre className="break-words whitespace-pre-wrap	">
-                  {traslated}
-                </pre>
+                <pre className="break-words whitespace-pre-wrap	">{result}</pre>
               </div>
-              <div
-                className="inline cursor-pointer hover:scale-110 p-2 px-4 flex justify-center flex-col"
-                onClick={() => {
-                  copyToClipboard(traslated)
-                  toast.success('copied')
-                }}
-              >
-                <IconCopy size={22} />
+              <div className="flex flex-row">
+                <div
+                  className="inline cursor-pointer hover:scale-110 p-2 px-4 flex justify-center flex-row items-center gap-1"
+                  onClick={() => {
+                    copyToClipboard(result)
+                    toast.success('copied')
+                  }}
+                >
+                  <IconCopy size={22} />
+                  <div>KO & EN</div>
+                </div>
+                <div
+                  className="inline cursor-pointer hover:scale-110 p-2 px-4 flex justify-center flex-row items-center gap-1"
+                  onClick={() => {
+                    copyToClipboard(traslated)
+                    toast.success('copied')
+                  }}
+                >
+                  <IconCopy size={22} />
+                  <div>Only EN</div>
+                </div>
+                <div
+                  className="inline cursor-pointer hover:scale-110 p-2 px-4 flex justify-center flex-row items-center gap-1"
+                  onClick={() => {
+                    copyToClipboard(text)
+                    toast.success('copied')
+                  }}
+                >
+                  <IconCopy size={22} />
+                  <div>Only KO</div>
+                </div>
               </div>
             </div>
           )
