@@ -86,7 +86,7 @@ export default function Form({ usage }) {
               <div className="flex bg-gray-50	p-4 mr-4 w-full">
                 <pre className="break-words whitespace-pre-wrap	">{result}</pre>
               </div>
-              <div className="flex flex-row">
+              <div className="flex flex-row text-base">
                 <div
                   className="inline cursor-pointer hover:scale-110 p-2 px-4 flex justify-center flex-row items-center gap-1"
                   onClick={() => {
