@@ -13,7 +13,7 @@ export default function Form({ usage }) {
   const [traslated, setTranslated] = useState('')
   const [loading, setLoading] = useState(false)
   const [text, setText] = useState('')
-  const result = text.includes('\n')
+  const result = text.includes('\n\n')
     ? `${text}\n\n---\n\n${traslated}`
     : `${text}\n---\n${traslated}`
   return (
